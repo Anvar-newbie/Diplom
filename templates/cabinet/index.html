@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Личный кабинет</title>
+    <style>
+        /* Здесь добавьте свой CSS-код */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .helptext{
+            display: none;
+        }
+        #settings ul li{
+            display: none;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+        }
+        header .user-info {
+            display: flex;
+            align-items: center;
+        }
+        header .user-info .balance,
+        header .user-info .email,
+        header .user-info .notifications {
+            margin-right: 10px;
+        }
+        header .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        main {
+            display: flex;
+        }
+        main .sidebar {
+            width: 200px;
+    background-color: #f1f1f1;
+    padding: 20px;
+    position: fixed;
+    top: 60px; /* высота шапки + отступ */
+    bottom: 0;
+        }
+        main .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        main .sidebar li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        main .sidebar li a:hover {
+            background-color: #e1e1e1;
+        }
+        main .content {
+            flex-grow: 1;
+            padding: 20px;
+            margin-left: 220px; /* ширина сайдбара + отступ */
+        }
+
+        /* Стили для скрытия и отображения контента */
+        .page {
+          display:none; 
+          visibility:hidden; 
+          opacity:0; 
+          transition:.5s ease-in-out; 
+          height:auto; 
+          overflow:hidden; 
+          position:relative; 
+          z-index:-1
+         }
+
+         .page.active { 
+           display:block; 
+           visibility:
+           visible; 
+           opacity:
+           1; 
+           z-index:
+           auto
+         }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Личный кабинет</h1>
+        <div class="user-info">
+            <div class="balance">Баланс:</div>
+            <div class="email">Почта:</div>
+            <div class="notifications">Уведомления:</div>
+            <img src="{{customer.imageURL}}" alt="Фото пользователя">
+            <div class="username">{{request.user}}</div>
+        </div>
+    </header>
+    <main>
+        <aside class="sidebar">
+          <ul id="menu">
+              <li><a href="#" data-page="profile">Личный кабинет</a></li>
+              <li><a href="#" data-page="requests">Заявки</a></li>
+              <li><a href="#" data-page="notifications">Уведомления</a></li>
+              <li><a href="#" data-page="settings">Настройки</a></li>
+              <li><a href="{% url 'logout' %}">Выйти</a></li>
+          </ul>
+      </aside>
+
+      <!-- Контент страницы -->
+      <section class="content">
+          <!-- Страница профиля -->
+          <div id="profile" class="page active">
+              Профиль пользователя
+              ...
+              ...
+              ...
+          </div>
+
+          <!-- Страница заявок -->
+          <div id="requests" class="page">
+              Заявки
+              ...
+              ...
+              ...
+          </div>
+
+          <!-- Страница уведомлений -->
+          <div id="notifications" class="page">
+              Уведомления
+              ...
+              ...
+              ...
+          </div>
+
+          <!-- Страница настроек -->
+          <div id="settings" class="page">
+              Настройки
+              <form method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+              {{createUserForm.as_p}}
+              {{customerForm.as_p}}
+              <p><button type="submit">Save</button></p>
+            </form>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Здесь добавьте свой JS-код -->
+    <script>
+        // Получаем ссылки на элементы меню
+        const menuLinks = document.querySelectorAll('#menu a[data-page]');
+
+        // Добавляем обработчик события click для каждой ссылки
+        menuLinks.forEach(link => {
+            link.addEventListener('click', event => {
+                // Отменяем действие по умолчанию (переход по ссылке)
+                event.preventDefault();
+
+                // Получаем ID страницы из атрибута data-page
+                const pageId = link.getAttribute('data-page');
+
+                // Находим страницу по ID
+                const page = document.getElementById(pageId);
+
+                // Скрываем все страницы
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // Отображаем выбранную страницу
+                page.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

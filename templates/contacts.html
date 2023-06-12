@@ -1,0 +1,209 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ecovit</title>
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header id="header" class="header">
+            <div class="subheader">
+                <div class="container subheader__container">
+                    <ul class="socials-list">
+                        <li class="socials-list__item">
+                            <a class="socials-list__link" href="#">
+                                <picture>
+                                    <source srcset="{% static 'img/inst.svg'%}" type="image/webp"><img
+                                        src="{% static 'img/inst.svg'%}" alt="inst">
+                                </picture>
+                            </a>
+                        </li>
+                        <li class="socials-list__item">
+                            <a class="socials-list__link" href="#">
+                                <picture>
+                                    <source srcset="{% static 'img/telegram.svg'%}" type="image/webp"><img
+                                        src="{% static 'img/telegram.svg'%}" alt="telegram">
+                                </picture>
+                            </a>
+                        </li>
+                        <li class="socials-list__item">
+                            <a class="socials-list__link" href="#">
+                                <picture>
+                                    <source srcset="{% static 'img/wp.svg'%}" type="image/webp"><img
+                                        src="{% static 'img/wp.svg'%}" alt="wp">
+                                </picture>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="subheader__text"><span>Доставка</span> по всей России</div>
+                    <div class="subheader__number">
+                        <a href="tel:79230156541">+7 923 0156541</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <nav class="nav--product nav">
+                <div class="nav__container container">
+                        <!--поменять логотип-->
+                        <a href="{% url 'store' %}" class="logo">
+                            <img src="/./static/images/logo.png" alt="logo" width="70" height="70">
+                        </a>
+                         <!--поменять логотип-->
+                    <ul class="nav__menu menu">
+                        <li class="nav__menu-item menu__item">
+                            <a href="{% url 'store' %}" class="nav__menu-link menu__link">ГЛАВНАЯ</a>
+                        </li>
+                        <li class="nav__menu-item menu__item">
+                            <a href="{% url 'products' %}" class="nav__menu-link menu__link">КАТАЛОГ</a>
+                        </li>
+                        <li class="nav__menu-item menu__item">
+                            <a href="{% url 'comments' %}" class="nav__menu-link menu__link">ОТЗЫВЫ</a>
+                        </li>
+                        <li class="nav__menu-item menu__item menu__item--active">
+                            <a href="{% url 'contacts' %}" class="nav__menu-link menu__link">ДОСТАВКА</a>
+                        </li>
+                    </ul>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+            <section class="delivery">
+                <div class="container delivery__container">
+                    <div class="delivery__info">
+                        <h3 class="delivery__title">Доставляем в любую точку России!</h3>
+                        <div class="delivery__text">
+                            <p>Доставка осуществляется через СДЭК
+                                и оплату оплачивает клиент при получении товара</p>
+                            <p>Цена за доставку зависит от вашего местонахождения
+                                И варируется между <span>300-1200</span> рублей</p>
+                        </div>
+                        <a href="{% url 'products' %}" class="btn-hover delivery__btn-link">ПЕРЕЙТИ К ТОВАРАМ</a>
+                    </div>
+                    <div class="delivery__img">
+                        <picture>
+                            <source srcset="{% static 'img/delivery.svg'%}" type="image/webp"><img
+                                src="{% static 'img/delivery.svg'%}" alt="">
+                        </picture>
+                    </div>
+                </div>
+            </section>
+            <div class="contacts">
+                <div class="container contacts__container">
+                    <h3 class="contacts__title">Контакты</h3>
+                    <p class="contacts__text">
+                        По поводу предложении звонить по номеру:
+                        <a href="tel:79564542112" class="contacts__num">+7 (956) 454 21 12</a>
+                    </p>
+                    <p class="contacts__text">Так же вы можете написать нам через социальные сети.</p>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container footer__container">
+                <div class="footer__copyright">© ecovit 2022 / Copyright</div>
+                <a href="{% url 'store' %}" class="footer__logo">
+                    <picture>
+                        <source srcset="{% static 'img/logo-white.svg'%}" type="image/webp"><img
+                            src="{% static 'img/logo-white.svg'%}" alt="logo">
+                    </picture>
+                </a>
+                <ul class="socials-list">
+                    <li class="socials-list__item">
+                        <a class="socials-list__link" href="#">
+                            <picture>
+                                <source srcset="{% static 'img/inst.svg'%}" type="image/webp"><img
+                                    src="{% static 'img/inst.svg'%}" alt="inst">
+                            </picture>
+                        </a>
+                    </li>
+                    <li class="socials-list__item">
+                        <a class="socials-list__link" href="#">
+                            <picture>
+                                <source srcset="{% static 'img/telegram.svg'%}" type="image/webp"><img
+                                    src="{% static 'img/telegram.svg'%}" alt="telegram">
+                            </picture>
+                        </a>
+                    </li>
+                    <li class="socials-list__item">
+                        <a class="socials-list__link" href="#">
+                            <picture>
+                                <source srcset="{% static 'img/wp.svg'%}" type="image/webp"><img
+                                    src="{% static 'img/wp.svg'%}" alt="wp">
+                            </picture>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <!-- скролл -->
+        <div id="scroll-up" class="scroll-up">
+            <a href="#header">
+                <svg width="24" height="13" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 11L13.4142 2.41421C12.6332 1.63317 11.3668 1.63316 10.5858 2.41421L2 11" stroke="white"
+                        stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </a>
+        </div>
+        <!-- //скролл -->
+        <!-- меню бургер -->
+        <div class="popup-menu-wrapp">
+            <ul class="popup-menu">
+                <li class="popup-menu__item">
+                    <a href="{% url 'store' %}" class="popup-menu__link">ГЛАВНАЯ</a>
+                </li>
+                <li class="popup-menu__item">
+                    <a href="{% url 'products' %}" class="popup-menu__link">КАТАЛОГ</a>
+                </li>
+                <li class="popup-menu__item">
+                    <a href="{% url 'comments' %}" class="popup-menu__link">ОТЗЫВЫ</a>
+                </li>
+                <li class="popup-menu__item">
+                    <a href="{% url 'contacts' %}" class="popup-menu__link popup-menu__link--active">ДОСТАВКА</a>
+                </li>
+            </ul>
+            <ul class="socials-list">
+                <li class="socials-list__item">
+                    <a class="socials-list__link" href="#">
+                        <picture>
+                            <source srcset="{% static 'img/inst.svg'%}" type="image/webp"><img
+                                src="{% static 'img/inst.svg'%}" alt="inst">
+                        </picture>
+                    </a>
+                </li>
+                <li class="socials-list__item">
+                    <a class="socials-list__link" href="#">
+                        <picture>
+                            <source srcset="{% static 'img/telegram.svg'%}" type="image/webp"><img
+                                src="{% static 'img/telegram.svg'%}" alt="telegram">
+                        </picture>
+                    </a>
+                </li>
+                <li class="socials-list__item">
+                    <a class="socials-list__link" href="#">
+                        <picture>
+                            <source srcset="{% static 'img/wp.svg'%}" type="image/webp"><img
+                                src="{% static 'img/wp.svg'%}" alt="wp">
+                        </picture>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- //меню бургер -->
+    </div>
+    <script src="{% static 'js/main.js'%}"></script>
+    <script src="{% static 'js/cart.js'%}"></script>
+</body>
+
+</html>
